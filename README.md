@@ -55,7 +55,7 @@ packaged as `fdfind`.
 Install the matching Yazi flavor once after Yazi is available:
 
 ```sh
-ya pkg add yazi-rs/flavors:catppuccin-mocha
+ya pkg install
 ```
 
 ## Install on the server
