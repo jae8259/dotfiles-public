@@ -55,13 +55,25 @@ command -v tv >/dev/null 2>&1 && eval "$(tv init zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
-if [[ -n "${CONDA_PREFIX:-}" ]]; then
-  autosuggestions="$CONDA_PREFIX/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  [[ -r "$autosuggestions" ]] && source "$autosuggestions"
-  unset autosuggestions
+zsh_plugin_dirs=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins")
+[[ -n "${CONDA_PREFIX:-}" ]] &&
+  zsh_plugin_dirs=("$CONDA_PREFIX/share/zsh/plugins" "${zsh_plugin_dirs[@]}")
 
-  # Syntax highlighting must be loaded after other widgets and integrations.
-  syntax_highlighting="$CONDA_PREFIX/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  [[ -r "$syntax_highlighting" ]] && source "$syntax_highlighting"
-  unset syntax_highlighting
-fi
+for zsh_plugin_dir in "${zsh_plugin_dirs[@]}"; do
+  autosuggestions="$zsh_plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  if [[ -r "$autosuggestions" ]]; then
+    source "$autosuggestions"
+    break
+  fi
+done
+unset autosuggestions
+
+# Syntax highlighting must be loaded after other widgets and integrations.
+for zsh_plugin_dir in "${zsh_plugin_dirs[@]}"; do
+  syntax_highlighting="$zsh_plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  if [[ -r "$syntax_highlighting" ]]; then
+    source "$syntax_highlighting"
+    break
+  fi
+done
+unset syntax_highlighting zsh_plugin_dir zsh_plugin_dirs
