@@ -39,7 +39,8 @@ added_style = 'bold green'
 deleted_style = 'bold red'
 
 [cmd_duration]
-min_time = 1000
+min_time = 0
+show_milliseconds = true
 format = 'took [$duration]($style) '
 style = 'bold yellow'
 

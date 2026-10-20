@@ -12,6 +12,8 @@ export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
 
 setopt append_history hist_ignore_dups hist_reduce_blanks share_history auto_cd
 bindkey -e
+autoload -Uz compinit
+(( $+functions[compdef] )) || compinit
 
 alias ..='cd ..'
 alias ...='cd ../..'
