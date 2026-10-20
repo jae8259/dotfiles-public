@@ -10,6 +10,16 @@ command_timeout = 1000
 vicmd_symbol = "[N] >>>"
 success_symbol = '[➜](bold green)'
 
+[username]
+disabled = true
+
+[hostname]
+ssh_only = true
+ssh_symbol = ''
+trim_at = ''
+format = '[$hostname]($style) '
+style = 'bold sapphire'
+
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style)'
 
