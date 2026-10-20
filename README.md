@@ -46,11 +46,14 @@ git stow zsh tmux nvim
 fd rg fzf eza zoxide
 atuin starship sesh television yazi
 zsh-autosuggestions zsh-syntax-highlighting
-jj mise direnv
+jj difftastic
+mise direnv
 ```
 
 The Television executable is named `tv`. On some Linux distributions, `fd` is
 packaged as `fdfind`.
+Difftastic installs the `difft` executable and is configured as Jujutsu's
+default diff formatter without replacing other files in `~/.config/jj`.
 
 Install the matching Yazi flavor once after Yazi is available:
 
