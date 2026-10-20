@@ -115,3 +115,5 @@ make unstow-mac
 The Git package contains the existing personal Git configuration and the Zsh
 package contains the Git aliases previously sourced by Home Manager.
 Machine-specific shell additions can remain untracked in `~/.zshrc.local`.
+Machine-specific Git identity can be set in the untracked
+`~/.gitconfig.local`, which is included after the shared Git configuration.
