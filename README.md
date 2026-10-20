@@ -1,58 +1,69 @@
 # dotfiles-public
 
-Small, portable dotfiles for a lab server and macOS. GNU Stow manages the
-symlinks; the operating system or environment manager installs the programs.
+Stow-managed terminal configuration for a lab server, based on
+[omerxx/dotfiles](https://github.com/omerxx/dotfiles) at commit
+`97b2213ad0e61c7a036290752e23497920978d55`.
 
-Inspired by [omerxx/dotfiles](https://github.com/omerxx/dotfiles), with the
-macOS automation, cloud tooling, security tooling, Nix, and tmux plugins
-removed.
+The matching configurations from the source repository are retained and placed
+into conventional per-tool Stow packages. Personal paths and identifiers are
+removed, and source-repo tools not selected in `todo.md` are omitted.
 
-## Server tools
+## Retained from the source repository
 
-Required:
+- Atuin
+- Ghostty (macOS only)
+- Neovim + LazyVim
+- Starship
+- Television and its channels
+- tmux, Catppuccin, Floax, and supporting tmux plugins
+- Zsh behavior adapted to be portable
+
+The shell also enables the config-free tools from `todo.md` when installed:
+`eza`, `zoxide`, `fzf`, `fd`, `rg`, `sesh`, `mise`, and `direnv`. Yazi needs no
+configuration here yet because the source repository does not provide one.
+Sesh uses the source repository's Television channel through the tmux
+`prefix` + `T` popup.
+
+## Omitted source-repo tools
+
+These are not part of the server tool list:
 
 ```text
-git stow zsh tmux nvim fd rg fzf eza zoxide starship
+aerospace gh-dash hammerspoon karabiner kindavim nix nix-darwin
+nushell opencode sketchybar skhd ssh wezterm zellij
 ```
 
-`fd` may be packaged as `fdfind` on some Linux distributions. If that is the
-case, make a user-local `fd` symlink or alias according to the distribution's
-instructions.
+## Server programs
 
-## macOS-only tools
+Install these through the lab-supported package manager:
 
-- Ghostty
-- A Nerd Font, if you choose to use icons later
+```text
+git stow zsh tmux nvim
+fd rg fzf eza zoxide
+atuin starship sesh television yazi
+mise direnv
+```
 
-Ghostty runs on the Mac, not on the server. Its configuration enables SSH
-terminfo integration for remote hosts.
+The Television executable is named `tv`. On some Linux distributions, `fd` is
+packaged as `fdfind`.
 
-## Install
-
-Clone the repository anywhere, then preview the server links:
+## Install on the server
 
 ```sh
 git clone https://github.com/jae8259/dotfiles-public.git ~/.dotfiles
 cd ~/.dotfiles
 make dry-run
-```
-
-Create the server links:
-
-```sh
 make server
 make check
 ```
 
-On a Mac, also link the Ghostty configuration:
+Install tmux plugins on first use:
 
 ```sh
-make mac
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-If Stow reports a conflict, move the existing file aside and run the command
-again. Do not use `stow --adopt` unless you intend to copy the existing file
-into this repository.
+Then start tmux and press `prefix` + `I`. The prefix is `Ctrl-a`.
 
 Remove the server links with:
 
@@ -60,7 +71,18 @@ Remove the server links with:
 make unstow
 ```
 
-On a Mac, remove both the Ghostty and server links with:
+## macOS
+
+Install Ghostty and a Nerd Font locally on the Mac, then run:
+
+```sh
+make mac
+```
+
+Ghostty is not installed on the server. Its SSH integration handles remote
+terminfo setup.
+
+Remove both Mac and server links with:
 
 ```sh
 make unstow-mac
@@ -68,8 +90,8 @@ make unstow-mac
 
 ## Local settings
 
-Machine-specific or secret shell configuration belongs in `~/.zshrc.local`.
-Git identity belongs in `~/.gitconfig.local`:
+Machine-specific shell settings belong in `~/.zshrc.local`. Git identity
+belongs in `~/.gitconfig.local`:
 
 ```ini
 [user]
@@ -77,4 +99,4 @@ Git identity belongs in `~/.gitconfig.local`:
     email = you@example.com
 ```
 
-Neither local file is tracked by this repository.
+These local files are intentionally not tracked.
