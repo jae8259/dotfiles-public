@@ -6,7 +6,7 @@ export VISUAL="${VISUAL:-$EDITOR}"
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE="${HISTSIZE:-10000}"
 export SAVEHIST="${SAVEHIST:-10000}"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml"
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
 
@@ -30,6 +30,11 @@ fi
 if command -v fd >/dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+if command -v fzf >/dev/null 2>&1; then
+  fzf_init="$(fzf --zsh 2>/dev/null)" && eval "$fzf_init"
+  unset fzf_init
 fi
 
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
