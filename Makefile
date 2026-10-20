@@ -1,5 +1,5 @@
 STOW := stow --target=$(HOME)
-SERVER_PACKAGES := git zsh tmux nvim starship atuin television rg
+SERVER_PACKAGES := git zsh tmux nvim starship atuin television rg yazi
 MAC_PACKAGES := ghostty
 
 .PHONY: server mac dry-run unstow unstow-mac check

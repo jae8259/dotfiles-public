@@ -19,10 +19,14 @@ removed, and source-repo tools not selected in `todo.md` are omitted.
 - Zsh behavior adapted to be portable
 
 The shell also enables the config-free tools from `todo.md` when installed:
-`eza`, `zoxide`, `fzf`, `fd`, `rg`, `sesh`, `mise`, and `direnv`. Yazi needs no
-configuration here yet because the source repository does not provide one.
-Sesh uses the source repository's Television channel through the tmux
-`prefix` + `T` popup.
+`eza`, `zoxide`, `fzf`, `fd`, `rg`, `sesh`, `mise`, and `direnv`. The source
+repository has no Yazi configuration, so the tracked local Yazi theme was
+adapted to Catppuccin Mocha. Sesh uses the source repository's Television
+channel through the tmux `prefix` + `T` popup.
+
+Neovim enables LazyVim's clangd extra and trusted project-local configuration.
+See [`docs/project-clangd.md`](docs/project-clangd.md) for the `.nvim.lua` and
+per-project clangd layout. Gitsigns remains enabled through LazyVim core.
 
 ## Omitted source-repo tools
 
@@ -46,6 +50,12 @@ mise direnv
 
 The Television executable is named `tv`. On some Linux distributions, `fd` is
 packaged as `fdfind`.
+
+Install the matching Yazi flavor once after Yazi is available:
+
+```sh
+ya pkg add yazi-rs/flavors:catppuccin-mocha
+```
 
 ## Install on the server
 

@@ -5,6 +5,7 @@ export VISUAL="${VISUAL:-$EDITOR}"
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE=10000
 export SAVEHIST=10000
+export PATH="$HOME/.local/bin:$PATH"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml"
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
 
