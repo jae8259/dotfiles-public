@@ -21,7 +21,7 @@ unstow-mac:
 	$(STOW) --delete $(SERVER_PACKAGES)
 
 check:
-	@for tool in git stow zsh tmux nvim fd rg fzf eza zoxide atuin starship sesh tv yazi mise direnv; do \
+	@for tool in git stow zsh tmux nvim fd rg fzf eza zoxide atuin starship sesh tv yazi jj mise direnv; do \
 		if command -v $$tool >/dev/null 2>&1; then \
 			printf 'ok       %s\n' $$tool; \
 		else \

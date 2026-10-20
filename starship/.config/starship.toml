@@ -2,8 +2,8 @@ add_newline = false
 # A minimal left prompt
 format = """$directory$character"""
 palette = "catppuccin_mocha"
-# move the rest of the prompt to the right
-right_format = """$all"""
+# Keep server identity, VCS state, environments, and command state on the right.
+right_format = """$hostname$vcs$python$conda$golang$rust$cpp$cmd_duration$status$jobs"""
 command_timeout = 1000
 
 [character]
@@ -19,6 +19,24 @@ ssh_symbol = ''
 trim_at = ''
 format = '[$hostname]($style) '
 style = 'bold sapphire'
+
+[vcs]
+# Prefer Jujutsu in colocated repositories; fall back to Git elsewhere.
+order = ['jj', 'git']
+jj_modules = '$jj_bookmark$jj_change$jj_metrics$jj_status'
+git_modules = '$git_branch$git_state$git_status'
+
+[jj_bookmark]
+symbol = 'jj:'
+style = 'bold mauve'
+
+[jj_change]
+change_hash_length = 7
+commit_hash_length = 7
+
+[jj_metrics]
+added_style = 'bold green'
+deleted_style = 'bold red'
 
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style)'

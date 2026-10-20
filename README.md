@@ -46,7 +46,7 @@ git stow zsh tmux nvim
 fd rg fzf eza zoxide
 atuin starship sesh television yazi
 zsh-autosuggestions zsh-syntax-highlighting
-mise direnv
+jj mise direnv
 ```
 
 The Television executable is named `tv`. On some Linux distributions, `fd` is
