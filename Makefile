@@ -28,3 +28,10 @@ check:
 			printf 'missing  %s\n' $$tool; \
 		fi; \
 	done
+	@for plugin in zsh-autosuggestions zsh-syntax-highlighting; do \
+		if test -n "$$CONDA_PREFIX" && test -r "$$CONDA_PREFIX/share/zsh/plugins/$$plugin/$$plugin.zsh"; then \
+			printf 'ok       %s\n' $$plugin; \
+		else \
+			printf 'missing  %s\n' $$plugin; \
+		fi; \
+	done

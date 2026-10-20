@@ -45,6 +45,7 @@ Install these through the lab-supported package manager:
 git stow zsh tmux nvim
 fd rg fzf eza zoxide
 atuin starship sesh television yazi
+zsh-autosuggestions zsh-syntax-highlighting
 mise direnv
 ```
 

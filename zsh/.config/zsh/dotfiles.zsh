@@ -43,3 +43,14 @@ command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
 command -v tv >/dev/null 2>&1 && eval "$(tv init zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+if [[ -n "${CONDA_PREFIX:-}" ]]; then
+  autosuggestions="$CONDA_PREFIX/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [[ -r "$autosuggestions" ]] && source "$autosuggestions"
+  unset autosuggestions
+
+  # Syntax highlighting must be loaded after other widgets and integrations.
+  syntax_highlighting="$CONDA_PREFIX/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  [[ -r "$syntax_highlighting" ]] && source "$syntax_highlighting"
+  unset syntax_highlighting
+fi
