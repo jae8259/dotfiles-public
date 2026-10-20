@@ -67,6 +67,18 @@ make server
 make check
 ```
 
+The Zsh package deliberately does not replace `~/.zshrc`, because managed
+servers often provide an important site-wide shell setup. Add this line to the
+end of the existing server `~/.zshrc` instead:
+
+```sh
+[[ -r "$HOME/.config/zsh/dotfiles.zsh" ]] && source "$HOME/.config/zsh/dotfiles.zsh"
+```
+
+Do not use `stow --adopt` to resolve existing-file conflicts: it can copy the
+server's files back into this Git checkout. Back up conflicting Git or Neovim
+configuration first, and then run `make server` again.
+
 Install tmux plugins on first use:
 
 ```sh

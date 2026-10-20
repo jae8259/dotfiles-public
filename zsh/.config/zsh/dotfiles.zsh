@@ -1,16 +1,16 @@
-[[ -o interactive ]] || return
+[[ -n "${DOTFILES_ZSH_LOADED:-}" ]] && return
+typeset -g DOTFILES_ZSH_LOADED=1
 
 export EDITOR="${EDITOR:-nvim}"
 export VISUAL="${VISUAL:-$EDITOR}"
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE="${HISTSIZE:-10000}"
+export SAVEHIST="${SAVEHIST:-10000}"
 export PATH="$HOME/.local/bin:$PATH"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship.toml"
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/ripgreprc"
 
 setopt append_history hist_ignore_dups hist_reduce_blanks share_history auto_cd
-autoload -Uz compinit && compinit
 bindkey -e
 
 alias ..='cd ..'
@@ -38,5 +38,3 @@ command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
 command -v tv >/dev/null 2>&1 && eval "$(tv init zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
-
-[[ -r "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
