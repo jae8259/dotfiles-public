@@ -3,7 +3,7 @@ add_newline = false
 format = """$directory$character"""
 palette = "catppuccin_mocha"
 # Keep server identity, VCS state, environments, and command state on the right.
-right_format = """$hostname$vcs$python$conda$golang$rust$cpp$cmd_duration$status$jobs"""
+right_format = """$hostname$vcs$conda$golang$rust$cpp$cmd_duration$status$jobs"""
 command_timeout = 1000
 
 [character]
@@ -37,6 +37,11 @@ commit_hash_length = 7
 [jj_metrics]
 added_style = 'bold green'
 deleted_style = 'bold red'
+
+[cmd_duration]
+min_time = 1000
+format = 'took [$duration]($style) '
+style = 'bold yellow'
 
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style)'
