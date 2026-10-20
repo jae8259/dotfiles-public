@@ -16,8 +16,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias vim='nvim'
 alias v='nvim'
-alias gst='git status --short --branch'
-alias gl='git log --oneline --decorate --graph'
+
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases_git.zsh" ]] &&
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases_git.zsh"
 
 if command -v eza >/dev/null 2>&1; then
   alias ls='eza --group-directories-first'

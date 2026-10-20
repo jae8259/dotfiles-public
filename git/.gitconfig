@@ -1,8 +1,10 @@
-[init]
-	defaultBranch = main
-[pull]
-	rebase = true
-[fetch]
-	prune = true
-[include]
-	path = ~/.gitconfig.local
+[user]
+	name = jae8259
+	email = dragonj5290@gmail.com
+[core]
+	precomposeunicode = true
+	quotepath = false
+  editor = 'nvim'
+[alias]
+	tree = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold cyan)<%an>%Creset' --abbrev-commit --date=relative
+  unstage = restore --staged

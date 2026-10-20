@@ -88,15 +88,8 @@ Remove both Mac and server links with:
 make unstow-mac
 ```
 
-## Local settings
+## Personal settings
 
-Machine-specific shell settings belong in `~/.zshrc.local`. Git identity
-belongs in `~/.gitconfig.local`:
-
-```ini
-[user]
-    name = Your Name
-    email = you@example.com
-```
-
-These local files are intentionally not tracked.
+The Git package contains the existing personal Git configuration and the Zsh
+package contains the Git aliases previously sourced by Home Manager.
+Machine-specific shell additions can remain untracked in `~/.zshrc.local`.
