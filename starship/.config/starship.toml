@@ -7,7 +7,7 @@ right_format = """$hostname$vcs$conda$golang$rust$cpp$cmd_duration$status$jobs""
 command_timeout = 1000
 
 [character]
-vicmd_symbol = "[N] >>>"
+vicmd_symbol = '\[N\] >>>'
 success_symbol = '[➜](bold green)'
 
 [username]
