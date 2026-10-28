@@ -29,7 +29,8 @@ check:
 		fi; \
 	done
 	@for plugin in zsh-autosuggestions zsh-syntax-highlighting; do \
-		if test -n "$$CONDA_PREFIX" && test -r "$$CONDA_PREFIX/share/zsh/plugins/$$plugin/$$plugin.zsh"; then \
+		if { test -n "$$CONDA_PREFIX" && test -r "$$CONDA_PREFIX/share/zsh/plugins/$$plugin/$$plugin.zsh"; } \
+			|| test -r "$${XDG_DATA_HOME:-$$HOME/.local/share}/zsh/plugins/$$plugin/$$plugin.zsh"; then \
 			printf 'ok       %s\n' $$plugin; \
 		else \
 			printf 'missing  %s\n' $$plugin; \
